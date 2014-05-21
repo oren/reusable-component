@@ -15,6 +15,11 @@ function Widget (opts) {
 Widget.prototype.appendTo = function (target) {
     if (typeof target === 'string') target = document.querySelector(target);
     target.appendChild(this.element);
+    target.textContent = "I am a widget";
+    target.textContent += "/n";
+    target.textContent += "var Widget = require('./widget.js')";
+    target.textContent += "/n";
+    target.textContent += "var w = new Widget()";
 };
 
 },{}]},{},[1])
