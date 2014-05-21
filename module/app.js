@@ -1,4 +1,4 @@
-var Widget = require('./widget.js');
+var Widget = require('app-widget');
 var w = new Widget();
 
 w.on('append', function (target) {
@@ -7,5 +7,5 @@ w.on('append', function (target) {
 
 w.appendTo('#container');
 w.setName('widget');
-w.setMessage('I am a widget with it\'s own html file. I was built with brfs and domify and i emit events');
+w.setMessage('I live in node_modules/app-widget folder');
 

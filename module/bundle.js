@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-var Widget = require('./widget.js');
+var Widget = require('app-widget');
 var w = new Widget();
 
 w.on('append', function (target) {
@@ -8,10 +8,41 @@ w.on('append', function (target) {
 
 w.appendTo('#container');
 w.setName('widget');
-w.setMessage('I am a widget with it\'s own html file. I was built with brfs and domify and i emit events');
+w.setMessage('I live in node_modules/app-widget folder');
 
 
-},{"./widget.js":5}],2:[function(require,module,exports){
+},{"app-widget":2}],2:[function(require,module,exports){
+
+var domify = require('domify');
+var inherits = require('inherits');
+var EventEmitter = require('events').EventEmitter;
+
+var html = "<div class=\"widget\">\n  <h1 class=\"name\"></h1>\n  <div class=\"msg\"></div>\n</div>\n";
+
+inherits(Widget, EventEmitter);
+module.exports = Widget;
+
+function Widget (opts) {
+    if (!(this instanceof Widget)) return new Widget(opts);
+    this.element = domify(html);
+}
+
+Widget.prototype.appendTo = function (target) {
+    if (typeof target === 'string') target = document.querySelector(target);
+    console.log('elem', this.element);
+    target.appendChild(this.element);
+    this.emit('append', target);
+};
+
+Widget.prototype.setName = function (name) {
+      this.element.querySelector('.name').textContent = name;
+}
+
+Widget.prototype.setMessage = function (msg) {
+      this.element.querySelector('.msg').textContent = msg;
+}
+
+},{"domify":4,"events":3,"inherits":5}],3:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -316,7 +347,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 
 /**
  * Expose `parse`.
@@ -405,7 +436,7 @@ function parse(html) {
   return fragment;
 }
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -430,35 +461,4 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],5:[function(require,module,exports){
-
-var domify = require('domify');
-var inherits = require('inherits');
-var EventEmitter = require('events').EventEmitter;
-
-var html = "<div class=\"widget\">\n  <h1 class=\"name\"></h1>\n  <div class=\"msg\"></div>\n</div>\n";
-
-inherits(Widget, EventEmitter);
-module.exports = Widget;
-
-function Widget (opts) {
-    if (!(this instanceof Widget)) return new Widget(opts);
-    this.element = domify(html);
-}
-
-Widget.prototype.appendTo = function (target) {
-    if (typeof target === 'string') target = document.querySelector(target);
-    console.log('elem', this.element);
-    target.appendChild(this.element);
-    this.emit('append', target);
-};
-
-Widget.prototype.setName = function (name) {
-      this.element.querySelector('.name').textContent = name;
-}
-
-Widget.prototype.setMessage = function (msg) {
-      this.element.querySelector('.msg').textContent = msg;
-}
-
-},{"domify":3,"events":2,"inherits":4}]},{},[1])
+},{}]},{},[1])
