@@ -97,7 +97,7 @@ function parse(html) {
 
 var domify = require('domify');
 
-var html = "<div class=\"widget\">\n  <h1 class=\"name\"></h1>\n  <div class=\"msg\"></div>\n</div>\n";
+var html = "<div class=\"widget\">\n  <h1 class=\"name\">widget</h1>\n  <div class=\"msg\">I am a widget with it's own html file. I was built with brfs and domify</div>\n</div>\n";
 
 module.exports = Widget;
 
@@ -109,7 +109,6 @@ function Widget (opts) {
 Widget.prototype.appendTo = function (target) {
     if (typeof target === 'string') target = document.querySelector(target);
     target.appendChild(this.element);
-    target.textContent = "I am a widget with it's own html file. I was built with brfs and domify";
 };
 
 },{"domify":2}]},{},[1])
