@@ -3,6 +3,10 @@
 * [Build](#build)
 * [Run](#run)
 
+## Setup
+
+    npm install
+
 ## Build
     npm run build-js
 
