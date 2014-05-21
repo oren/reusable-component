@@ -4,7 +4,6 @@
 * [Run](#run)
 
 ## Setup
-
     npm install
 
 ## Build
