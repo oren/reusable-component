@@ -1,0 +1,12 @@
+{
+  "name": "reusable-components",
+  "version": "1.0.0",
+  "scripts": {
+    "build-js": "browserify -t brfs app.js > bundle.js"
+  },
+  "dependencies": {
+    "browserify": "^4.1.5",
+    "domify": "^1.2.2",
+    "brfs": "^1.1.1"
+  }
+}
