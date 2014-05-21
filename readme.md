@@ -1,7 +1,7 @@
 # Reusable Components using Browserify
 
 index.html
-```
+```html
 <html>
   <body>
     <div id='container'></div>
@@ -11,7 +11,7 @@ index.html
 ```
 
 app.js
-```
+```js
 var Widget = require('app-widget');
 var w = new Widget();
 
@@ -31,7 +31,7 @@ browserify app.js > bundle.js
 ```
 
 outputs this html
-```
+```html
 <html>
   <head></head>
   <body>
