@@ -433,7 +433,7 @@ var domify = require('domify');
 var inherits = require('inherits');
 var EventEmitter = require('events').EventEmitter;
 
-var html = "<div class=\"widget\">\n  <h1 class=\"name\"></h1>\n  <div class=\"msg\"></div>\n</div>\n";
+var html = "<div class=\"widget\">\n  <h1 class=\"name\">widget</h1>\n  <div class=\"msg\">I am a widget with it's own html file. I was built with brfs and domify and i emit events</div>\n</div>\n";
 
 inherits(Widget, EventEmitter);
 module.exports = Widget;
@@ -447,7 +447,6 @@ Widget.prototype.appendTo = function (target) {
     if (typeof target === 'string') target = document.querySelector(target);
     console.log('elem', this.element);
     target.appendChild(this.element);
-    // target.textContent = "I am a widget with it's own html file. I was built with brfs and domify and i emit events";
     this.emit('append', target);
 };
 

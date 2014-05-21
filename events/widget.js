@@ -17,6 +17,5 @@ Widget.prototype.appendTo = function (target) {
     if (typeof target === 'string') target = document.querySelector(target);
     console.log('elem', this.element);
     target.appendChild(this.element);
-    // target.textContent = "I am a widget with it's own html file. I was built with brfs and domify and i emit events";
     this.emit('append', target);
 };
