@@ -2,4 +2,5 @@ simple/node_modules
 brfs/node_modules
 events/node_modules
 module/node_modules/*
+module-with-css/node_modules/*
 !module/node_modules/app-widget
